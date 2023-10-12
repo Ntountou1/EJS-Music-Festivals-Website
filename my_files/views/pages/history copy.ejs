@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+  
+
+<body>
+  <!--Dark Theme-->
+  <button onclick="toggleDark()">
+    <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+      <path fill="currentColor"
+        d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+      </path>
+    </svg></button>
+  <script type="text/javascript" src="toggleDark.js"></script>
+    <style>
+        .hide {
+          display: none;
+        }
+      </style>
+      <script>
+        function searchEvents() {
+          var searchInput = document.getElementById('searchInput').value.toLowerCase();
+          var events = document.getElementsByClassName('sighent');
+          
+          for (var i = 0; i < events.length; i++) {
+            var event = events[i];
+            var eventName = event.querySelector('h3').textContent.toLowerCase();
+            
+            if (eventName.indexOf(searchInput) > -1) {
+              event.style.display = 'block';
+            } else {
+              event.style.display = 'none';
+            }
+          }
+        }
+      </script>
+    </head>
+    <body>
+      <input type="text" id="searchInput" placeholder="Search events" oninput="searchEvents()">
+      <br><br><br><br><br>
+      <div id='sightimg'>
+        <% events.forEach(function(event){ %>
+          <div class="sighent">
+            <div class="basicevent"><img src="<%= event.photo %>"></div>
+            <div class="hide"><img src="<%= event.mapp %>"></div>
+            <h3><%= event.name %></h3>
+            <p><%= event.desc %></p>
+            <p><%= event.date %></p>
+          </div>
+        <% }); %>
+      </div>
+    
+    
+
+<!--
+<br><br><br><br><br>
+    <div id='sightimg'>
+        <% events.forEach(function(event){ %>
+
+         
+    <div id="sighent">
+   <div class="basicevent"><img src="<%= event.photo %>"></div>
+    <div class="hide"><img src="<%= event.mapp %>"></div>
+    <h3><%= event.name %></h3>
+    <p><%= event.desc %> </p>
+    <p><%= event.date %> </p>
+    </div>
+    <% }); %>
+  </div>-->
+
+
+
+<script>
+       $('.first-image').mouseover(function(){
+                $(this).toggleClass('second-image');	
+            });
+            $('.second-image').mouseover(function(){
+                $(this).toggleClass('first-image');	
+            });
+
+            
+</script>
+  
+</body>
+
+
+<footer>
+    <%- include('../common/footer') %>
+</footer>
+
+
+</html>

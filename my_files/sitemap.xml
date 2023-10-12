@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+
+<url>
+  <loc>localhost:4000/</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>localhost:4000/index</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/sights</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/reserv</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/events</loc>
+  <lastmod>2022-06-17T14:42:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/act</loc>
+  <lastmod>2022-06-18T13:51:17+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/abbot</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/contact</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/login</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>localhost:4000/register</loc>
+  <lastmod>2022-07-09T06:45:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>

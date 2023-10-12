@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<body>
+  <!--Dark Theme-->
+  <button onclick="toggleDark()">
+    <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+      <path fill="currentColor"
+        d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+      </path>
+    </svg></button>
+  <script type="text/javascript" src="toggleDark.js"></script>
+  <div class="all-class">
+    <section class="signup-form">
+      <div class="signup-container">
+        <div class="header">
+          <h1>Register</h1>
+          <p class="p-signup">Please fill in this form to create an account.</p>
+        </div>
+    <form action="/sign_up" method="POST">
+          
+          <hr>
+
+          <div class="signup-input">
+            <i class=" fa fa-solid fa-user"></i>
+            <input type="text" placeholder="Enter Name" name="name" id="name" required>
+          </div>
+          
+          <div class="signup-input">
+            <i class="fa fa-solid fa-envelope"></i>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+          </div>
+          
+          <div class="signup-input">
+            <i class="fa fa-solid fa-lock"></i>
+            <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+          </div>
+          
+          <div class="signup-input">
+            <i class="fa fa-solid fa-lock"></i>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+          </div>
+          
+          <hr>
+      
+          <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+          <input type="submit"  class="signup-btn" value="Register">
+      
+        <div class="container signin">
+          <p>Already have an account? <a href="/login">Sign in</a>.</p>
+          
+        </div>
+      </form>
+    </section>
+  </div>
+</body>
+
+<footer>
+  <%- include('../common/footer') %>
+</footer>
+
+</html>

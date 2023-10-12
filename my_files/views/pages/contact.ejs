@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+  <header>
+    <%- include('../common/nav') %>
+  </header>
+
+
+
+
+
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
+
+
+  <body>
+    <!--Dark Theme-->
+    <button onclick="toggleDark()">
+      <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+        <path fill="currentColor"
+          d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+        </path>
+      </svg></button>
+    <script type="text/javascript" src="toggleDark.js"></script>
+
+    <section id="cont">
+
+
+
+
+      <div class="contact-box">
+        <div class="contact-links">
+          <h2 class="h2-class">CONTACT</h2>
+          <div class="links">
+            <div class="link">
+              <a><img class="contact-image" src="https://i.postimg.cc/m2mg2Hjm/linkedin.png" alt="linkedin"></a>
+            </div>
+            <div class="link">
+              <a><img class="contact-image" src="https://i.postimg.cc/YCV2QBJg/github.png" alt="github"></a>
+            </div>
+            <div class="link">
+              <a><img class="contact-image" src="https://i.postimg.cc/W4Znvrry/codepen.png" alt="codepen"></a>
+            </div>
+            <div class="link">
+              <a><img class="contact-image" src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <form>
+            <div class="form-item">
+              <input class="contact-input" type="text" name="firstname" id="fname" required>
+              <label class="contact-label" id="ffname" for="fname">Name:</label>
+            </div>
+            <div class="form-item">
+              <input class="contact-input" type="text" name="lemail" id="lma" required>
+              <label class="contact-label" id="llma" for="lma">Email:</label>
+            </div>
+            <div class="form-item">
+              <textarea class="contact-textarea" name="subject" id="subject" required></textarea>
+              <label class="contact-label" id="lsub" for="subject">Message:</label>
+            </div>
+
+            <p id="mfail">Please fill out all the fields!</p>
+
+            <p id="succ">Message Sent!</p>
+
+            <p id="papaki">The e-mail isn't valid.</p>
+
+            <form method="post">
+              <input id="submit" type="button" value="Submit" onclick="sendEmail()" />
+            </form>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <script>
+      window.addEventListener('load', settimestart);
+      var countdownb = 4;
+
+
+
+      function settimestart() {
+
+        if (countdownb == 0) {
+          $("#submit").attr("disabled", false);
+          $("#submit").attr("value", "Submit");
+          countdownb = 5;
+        } else {
+          $("#submit").attr("disabled", true);
+          $("#submit").attr("value", "Submit");
+          countdownb--;
+          setTimeout(settimestart, 0)
+        }
+      }
+    </script>
+
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      function sendEmail() {
+        $("#submit").attr("disabled", true);
+        document.getElementById("papaki").style.display = 'none';
+        document.getElementById("succ").style.display = 'none';
+        document.getElementById("mfail").style.display = 'none';
+        var a = false;
+        if ((document.getElementById("lma").value).includes("@") && (document.getElementById("lma").value).includes(".")) {
+          a = true;
+        }
+        else {
+          a = false;
+          $("#submit").attr("disabled", false);
+          document.getElementById("papaki").style.display = "block";
+        }
+
+        if (document.getElementById("subject").value == "" || document.getElementById("lma").value == "" || document.getElementById("fname").value == "") {
+          document.getElementById("mfail").style.display = "block";
+
+          $("#submit").attr("disabled", false);
+        }
+
+
+        if (document.getElementById("subject").value != "" && document.getElementById("lma").value != "" && document.getElementById("fname").value != "" && a == true) {
+
+          document.getElementById("succ").style.display = 'block';
+          Email.send({
+            Host: "smtp.gmail.com",
+            Username: "[forwardusername]",
+            Password: "[forwardpass]",
+            To: '[myemail]',
+            From: "[forwardemail]",
+            Subject: "Contract Message by: " + document.getElementById("fname").value,
+            Body: document.getElementById("subject").value + " <br><br>Email: " + document.getElementById("lma").value,
+          })
+            .then(function () {
+              $("#submit").attr("disabled", false);
+
+
+              var countdown = 25;
+              settime();
+
+
+              function settime() {
+
+                if (countdown == 0) {
+                  $("#submit").attr("disabled", false);
+                  $("#submit").attr("value", "Submit");
+                  countdown = 25;
+                } else {
+                  $("#submit").attr("disabled", true);
+                  $("#submit").attr("value", "Resend (" + countdown + ")");
+                  countdown--;
+                  setTimeout(settime, 1000)
+                }
+              }
+
+            });
+        }
+
+
+      }
+
+
+    </script>
+
+  </body>
+
+
+
+
+  <footer>
+    <%- include('../common/footer') %>
+  </footer>
+
+  </body>
+
+  </html>

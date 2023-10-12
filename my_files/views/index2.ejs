@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+<head>
+
+    <title>
+        Paradise Travels in Santorini 
+    </title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png"/>
+</head>
+
+<header>
+<script>
+    /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function theFunction() {
+  document.getElementById("menuDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.menudropbtn')) {
+    var dropdowns = document.getElementsByClassName("menudrop-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+  </script>
+
+    <div id="textbox">
+        <div class="alignleft">
+            <img id="palm" src="santo.png">
+            <a class="active" href="#home">Home</a>
+            <a href="sights.ejs">Sights</a>
+            <div class="menudrop">
+                <button onclick="theFunction()" class="menudropbtn">Information</button>
+                <div id="menuDropdown" class="menudrop-content">
+                    <a href="reserv.ejs">Reserve</a>
+                    <a href="events.ejs">Events</a>
+                    <a href="act.ejs">Activities</a>
+                </div>
+              </div>
+            <a href="contact.ejs">Contact us</a>
+            <a href="about.ejs">About</a></div>
+            <img id="magni" src="magni.png">
+        <div class="alignright">
+            <a><img id="proficon" src="profile.png"></a>
+            <a href="login.ejs">Login</a>
+            <a>|</a>
+            <a href="register.ejs">Register</a></div>
+      </div>
+
+</header>
+
+<body>
+    <div class="w3-content" style="max-width:2000px;margin-top:0px">
+
+        <!-- Automatic Slideshow Images -->
+        <div class="mySlides w3-display-container w3-center">
+          <img src="slide1.jpg" style="width:100%">
+          <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3>Beautiful Landscape</h3>
+            <p><b>You'll have the best time!</b></p>   
+          </div>
+        </div>
+        <div class="mySlides w3-display-container w3-center">
+          <img src="slide3.jpg" style="width:100%">
+          <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3>Extraordinary Nights</h3>
+            <p><b>You won't forget them!</b></p>    
+          </div>
+        </div>
+        <div class="mySlides w3-display-container w3-center">
+          <img src="slide2.jpg" style="width:100%">
+          <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+            <h3></h3>
+            <p><b></b></p>    
+          </div>
+        </div>
+      
+        <!-- The Band Section -->
+        <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+          <h2 class="w3-wide">Paradise in Santorini</h2>
+          <p class="w3-opacity"><i>You'll love it!</i></p>
+          <p class="w3-justify">Santorini is a small island of the Aegean Sea, Greece. It is located on its southern part and belongs to Cyclades, a group of Greek islands. Hence, the most common and comfortable way to enter the island is by going through Athens, the capital city of Greece.
+            <br>
+            You can take a plane from Athens to Santorini. You can easily get a direct flight to Athens from the USA, the UK and Canada. The code of Athens’ International Airport is ATH while that of Santorini’s airport is JTR.
+            <br><br>
+            During the summer season, charters from various European cities have direct flights to Santorini. The charters start from multiple cities, including Paris, London, Prague, Amsterdam, Milan, Rome, Frankfurt, and Naples.
+            <br><br>
+            Please note that these flights are not available every day so if none meets with your schedule, your resort will be to travel to Santorini through Athens.</p>
+          <div class="w3-row w3-padding-32">
+            <div class="w3-third">
+              <p>Sights</p>
+              <img src="name1.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+            </div>
+            <div class="w3-third">
+              <p>Events</p>
+              <img src="name2.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+            </div>
+            <div class="w3-third">
+              <p>Activites</p>
+              <img src="name3.jpg" class="w3-round" alt="Random Name" style="width:60%">
+            </div>
+          </div>
+        </div>
+      
+        
+      
+      <!-- Image of location/map -->
+      <img src="map.png" class="w3-image w3-greyscale-min" style="width:100%">
+
+</body>
+
+<footer id="homefooter">
+    <div>
+     
+        
+        
+      </div>
+    <div class="redirect">
+          <a href="https://www.instagram.com"><img src="hinstagram-image.png" alt="first photo"></a>
+          <a href="https://www.facebook.com"><img src="hfb-image.png" alt="second photo"></a>
+          <a href="mailto:fake@mail.com"><img src="hmail-image.png" alt="second photo"></a>
+        
+      </div>
+      <div class="copyr">© 2022 Copyleft</div>
+      
+    </footer>
+
+
+  <!--
+   // Automatic Slideshow - change image every 4 seconds
+        var myIndex = 0;
+        carousel();
+        
+        function carousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          myIndex++;
+          if (myIndex > x.length) {myIndex = 1}    
+          x[myIndex-1].style.display = "block";  
+          setTimeout(carousel, 4000);    
+        }
+        
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+          var x = document.getElementById("navDemo");
+          if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+          } else { 
+            x.className = x.className.replace(" w3-show", "");
+          }
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        var modal = document.getElementById('ticketModal');
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    -->  
+
+</html>

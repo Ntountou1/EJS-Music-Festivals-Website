@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+<body>
+  <!--Dark Theme-->
+  <button onclick="toggleDark()">
+    <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+      <path fill="currentColor"
+        d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+      </path>
+    </svg>
+  </button>
+  <script type="text/javascript" src="toggleDark.js"></script>
+    <style>
+        .hide {
+          display: none;
+        }
+        .disabled-date {
+          color: #999;
+          cursor: default;
+        }
+        .active-date {
+          cursor: pointer;
+        }
+    </style>
+    <script>
+      function searchEvents() {
+        var searchInput = document.getElementById('searchInput').value.toLowerCase();
+        var events = Array.from(document.getElementsByClassName('sighent'));
+        
+        events.forEach(function(event) {
+          var eventName = event.querySelector('h3').textContent.toLowerCase();
+          
+          if (eventName.indexOf(searchInput) > -1) {
+            event.style.display = 'block';
+          } else {
+            event.style.display = 'none';
+          }
+        });
+      }
+      
+      function compareDates(date1, date2) {
+        var d1 = new Date(date1.split('/').reverse().join('/'));
+        var d2 = new Date(date2.split('/').reverse().join('/'));
+        
+        if (d1 > d2) {
+          return -1;
+        } else if (d1 < d2) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
+      
+      function sortEvents() {
+        var events = Array.from(document.getElementsByClassName('sighent'));
+        
+        events.sort(function(a, b) {
+          var date1 = a.querySelector('p.date').textContent;
+          var date2 = b.querySelector('p.date').textContent;
+          
+          return compareDates(date1, date2);
+        });
+        
+        var sightimg = document.getElementById('sightimg');
+        events.forEach(function(event) {
+          sightimg.appendChild(event);
+        });
+      }
+      
+      function setActiveDates() {
+        var dates = Array.from(document.querySelectorAll('.sighent .date'));
+        
+        dates.forEach(function(date) {
+          var dateValue = new Date(date.textContent.split('/').reverse().join('/'));
+          var today = new Date();
+          
+          if (dateValue < today) {
+            date.classList.add('disabled-date');
+          } else {
+            date.classList.remove('disabled-date');
+            date.classList.add('active-date');
+          }
+        });
+      }
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        sortEvents();
+        searchEvents();
+        setActiveDates();
+      });
+    </script>
+
+    <input type="text" id="searchInput" placeholder="Search events" oninput="searchEvents()">
+    <br><br><br><br><br>
+    <div id='sightimg'>
+      <% events.forEach(function(event){ %>
+        <div class="sighent">
+          <div class="basicevent"><img src="<%= event.photo %>"></div>
+          <div class="hide"><img src="<%= event.mapp %>"></div>
+          <h3><%= event.name %></h3>
+          <p class="date <%= (new Date(event.date.split('/').reverse().join('/'))) < (new Date()) ? 'disabled-date' : '' %>"><%= event.date %></p>
+          <p><%= event.desc %></p>
+          <% if ((new Date(event.date.split('/').reverse().join('/'))) >= (new Date())) { %>
+            <a class="grab-ticket" href="/reserv?eventName=<%= encodeURIComponent(event.name) %>">Grab your ticket!</a>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var basicevents = document.getElementsByClassName('basicevent');
+    
+        for (var i = 0; i < basicevents.length; i++) {
+          var basicevent = basicevents[i];
+          var dateElement = basicevent.closest('.sighent').querySelector('p.date');
+    
+          // Check if the date is active (not in the past)
+          if (new Date(dateElement.textContent.split('/').reverse().join('/')) >= new Date()) {
+            basicevent.style.cursor = 'pointer';
+          }
+        }
+      });
+    </script>
+    
+    
+</body>
+
+<footer>
+    <%- include('../common/footer') %>
+</footer>
+</html>

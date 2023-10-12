@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<%- include('../../common/head') %>
+<header>
+    <%- include('../../common/nav') %>
+</header>
+
+
+
+<script src="../../../scripts/login.js"></script>
+<body onload="adminCookie()"> 
+
+   <!--Dark Theme-->
+   <button onclick="toggleDark()">
+    <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+      <path fill="currentColor"
+        d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+      </path>
+    </svg></button>
+  <script type="text/javascript" src="toggleDark.js"></script>
+
+
+<table id="forusers">
+    <tr>
+<th>Names - ID</th>
+<th>Username</th>
+<th>Concert</th>
+<th>Seats</th>
+<th>Card Information</th>
+<th>Price</th>
+<th>Delete</th>
+
+   </tr>
+
+   <% revs.forEach(function(rev){ %>
+    <tr>
+        <td><% if  (typeof rev.many.First_Person !== 'undefined') { %>
+            <%= rev.many.First_Person.Full_Name %>
+            <%= rev.many.First_Person.ID_Number %>
+          <% } %>
+<br>
+          <% if  (typeof rev.many.Second_Person !== 'undefined') { %>
+            <%= rev.many.Second_Person.Full_Name %>
+            <%= rev.many.Second_Person.ID_Number %>
+          <% } %>
+        <br>
+            <% if  (typeof rev.many.Third_Person !== 'undefined') { %>
+                <%= rev.many.Third_Person.Full_Name %>
+                  <%= rev.many.Third_Person.ID_Number %>
+                <% } %>
+<br>
+                <% if  (typeof rev.many.Fourth_Person !== 'undefined') { %>
+                    <%= rev.many.Fourth_Person.Full_Name %>
+                    <%= rev.many.Fourth_Person.ID_Number %>
+                  <% } %>
+        
+        </td>
+        <td><%= rev.revuser %> </td>
+        <td><%= rev.eventid %></td>
+        <td><%= rev.seat %></td>
+        <td><%= rev.cardtype %> <br><%= rev.cardname %></td>
+        <td><%= rev.price %> €</td>
+        <td><form action="/deleteuserrev" method="POST">
+            <div id="rev"> <input type="checkbox" name="checkbox" value="<%=rev.catchpa%>" onchange="this.form.submit()"><p>Remove</p></div></td>
+    </tr>
+<% }); %>
+
+
+
+    </tr>
+
+
+</table>
+
+
+</body>
+
+<footer>
+  <%- include('../../common/footer') %>
+</footer>
+
+</html>

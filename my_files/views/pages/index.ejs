@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+  <header>
+    <%- include('../common/nav') %>
+  </header>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <main>
+
+
+
+
+    <script>
+      /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+      function theFunction() {
+        document.getElementById("menuDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown menu if the user clicks outside of it
+      window.onclick = function (event) {
+        if (!event.target.matches('.menudropbtn')) {
+          var dropdowns = document.getElementsByClassName("menudrop-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+
+    </script>
+
+
+
+    <body class="index-body">
+
+      <!--Dark Theme-->
+      <button onclick="toggleDark()">
+        <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+          <path fill="currentColor"
+            d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+          </path>
+        </svg></button>
+      <script type="text/javascript" src="toggleDark.js"></script>
+
+
+      <div>
+
+
+        <!-- Header with full-height image -->
+        <header>
+          <div>
+            <div class="mySlides w3-display-container w3-center">
+              <img
+                src="https://images.pexels.com/photos/4033340/pexels-photo-4033340.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                style="opacity: 0.7; width:100%; height:800px; object-fit:cover;">
+              <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3>Secure & Fast</h3>
+                <p><b>You'll have the easiest time booking your favorite artists!</b></p>
+              </div>
+            </div>
+            <div class="mySlides w3-display-container w3-center">
+              <img
+                src="https://images.pexels.com/photos/2240771/pexels-photo-2240771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                style="opacity: 0.7; width:100%; height:800px; object-fit:cover;">
+              <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3>Extraordinary Artists</h3>
+                <p><b>Have the time of your life!</b></p>
+              </div>
+            </div>
+            <div class="mySlides w3-display-container w3-center">
+              <img
+                src="https://images.pexels.com/photos/1578317/pexels-photo-1578317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                style="opacity: 0.7; width:100%; height:800px; object-fit:cover;">
+              <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3></h3>
+                <p><b></b></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="w3-display-left w3-text-white" style="padding:48px">
+            <span class="w3-jumbo w3-hide-small">Unforgettable Beats, Timeless Connections.</span><br>
+
+            <span class="w3-large">Embark on a Melodic Journey: Grab Your Ticket, Let Music Paint Your Soul!</span>
+            <p><a href="#about"
+                class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn
+                more and start today</a></p>
+          </div>
+        </header>
+
+
+        <!-- About Section -->
+        <div class="w3-container" style="padding:128px 16px" id="about">
+          <h3 class="w3-center">ABOUT THE COMPANY</h3>
+          <p class="w3-center w3-large">Key features of our company</p>
+          <div class="w3-row-padding w3-center" style="margin-top:64px">
+            <div class="w3-quarter">
+              <i class="fa fa-smile-o w3-margin-bottom w3-jumbo w3-center"></i>
+              <p class="w3-large">Convenience</p>
+              <p>You can skip the long queues and easily browse, select, and purchase tickets from the comfort of your
+                own home! No need to rush to physical ticket outlets or worry about missing out on tickets due to
+                limited availability.</p>
+            </div>
+            <div class="w3-quarter">
+              <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+              <p class="w3-large">Wide Selection</p>
+              <p> We give you a wide variety of events, featuring diverse genres, artists, and venues. You have the
+                freedom to explore an extensive catalog, discover new artists, and choose from a variety of seating
+                options, ensuring you find the perfect concert experience for your preferences.</p>
+            </div>
+            <div class="w3-quarter">
+              <i class="fa fa-lock w3-margin-bottom w3-jumbo"></i>
+              <p class="w3-large">Secure and Reliable</p>
+              <p> We prioritize the security and reliability of our transactions. Additionally, wen offer customer
+                support to address any concerns or issues that may arise during the ticket-buying process.</p>
+            </div>
+            <div class="w3-quarter">
+              <i class="fa fa-bell w3-margin-bottom w3-jumbo"></i>
+              <p class="w3-large">Exclusive Offers and Notifications</p>
+              <p> By signing up or subscribing to our concert ticket website, you gain access to exclusive offers,
+                pre-sales, and notifications about upcoming concerts! This allows you to stay updated on your favorite
+                artists, secure early-bird tickets, and take advantage of special deals, enhancing your overall concert
+                experience.</p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Promo Section - "We know design" -->
+        <div class="w3-container w3-light-grey" style="padding:128px 16px">
+          <div class="w3-row-padding">
+            <div class="w3-col m6">
+              <h3 class="passion">Music is our passion.</h3>
+              <p>At our concert ticket website, we are dedicated to providing you with the ultimate ticket-buying
+                experience. With a seamless and user-friendly interface, you can effortlessly browse through a vast
+                selection of concerts, ranging from popular artists to emerging talents across various genres. Our
+                platform offers convenience, allowing you to secure your tickets from the comfort of your own home. With
+                a secure and reliable payment system, you can trust that your transactions are safe with us. Moreover,
+                we value your feedback and continuously strive for excellence, which is why we provide a platform for
+                user critics to share their experiences and help you make informed decisions. Join our vibrant community
+                of music enthusiasts, gain access to exclusive offers, and let us be your go-to destination for
+                unforgettable concert experiences. Choose us and let the rhythm of live music ignite your soul.</p>
+            </div>
+            <div class="w3-col m6">
+              <img class="w3-image w3-round-large"
+                src="https://images.pexels.com/photos/3693108/pexels-photo-3693108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                style="object-fit:cover;" alt="Buildings" width="700" height="394">
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo Section "Statistics" -->
+        <div class="promo w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+          <div class="w3-quarter">
+            <span class="w3-xxlarge">14+</span>
+            <br>Partners
+          </div>
+          <div class="w3-quarter">
+            <span class="w3-xxlarge">55+</span>
+            <br>Projects Done
+          </div>
+          <div class="w3-quarter">
+            <span class="w3-xxlarge">89+</span>
+            <br>Happy Clients
+          </div>
+          <div class="w3-quarter">
+            <span class="w3-xxlarge">150+</span>
+            <br>Meetings
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- Image of location/map 
+        <img src="map.png" class="index-image">-->
+
+
+
+        <div>
+
+          <script>
+            // Automatic Slideshow - change image every 4 seconds
+            var myIndex = 0;
+            carousel();
+
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+              }
+              myIndex++;
+              if (myIndex > x.length) { myIndex = 1 }
+              x[myIndex - 1].style.display = "block";
+              setTimeout(carousel, 4000);
+            }
+
+            // Used to toggle the menu on small screens when clicking on the menu button
+            function myFunction() {
+              var x = document.getElementById("navDemo");
+              if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+              } else {
+                x.className = x.className.replace(" w3-show", "");
+              }
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            var modal = document.getElementById('ticketModal');
+            window.onclick = function (event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+          </script>
+
+        </div>
+  </main>>
+
+  <footer>
+    <%- include('../common/footer') %>
+  </footer>
+
+  </html>

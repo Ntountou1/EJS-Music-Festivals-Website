@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+  <script>
+     function mehFunction() {
+      document.getElementById("manyDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.manydropbtn')) {
+        var dropdowns = document.getElementsByClassName("manydrop-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }  
+
+    
+  </script>
+
+<script>
+
+
+
+ $('#step-two *').prop('disabled', true);
+$('#step-three *').prop('disabled', true);
+
+</script>
+
+<body onload="checkCookie()">
+ 
+<script>
+  
+
+  function continue1(){
+    $('#step-one *').prop('disabled', true);
+    $('#step-two *').prop('disabled', false);
+    $('#step-three *').prop('disabled', true);
+   
+    document.getElementById("button1").disabled = true;
+    document.getElementById("button2").disabled = false;
+    document.getElementById("button11").disabled = false;
+    document.getElementById("button22").disabled = true;
+    
+
+
+    }
+
+    function continue2(){
+      $('#step-one *').prop('disabled', true);
+      $('#step-two *').prop('disabled', true);
+    $('#step-three *').prop('disabled', false);
+
+    document.getElementById("button2").disabled = true;
+
+    document.getElementById("button22").disabled = false;
+    document.getElementById("button11").disabled = true;
+
+    const submitButton = document.getElementById("submitButton");
+
+    submitButton.disabled = true;
+
+
+    }
+
+  
+    
+
+    function back1(){
+    $('#step-one *').prop('disabled', false);
+    $('#step-two *').prop('disabled', true);
+    $('#step-three *').prop('disabled', true);
+
+    document.getElementById("button1").disabled = false;
+    document.getElementById("button2").disabled = true;
+    document.getElementById("button11").disabled = true;
+    }
+
+    function back2(){
+      $('#step-one *').prop('disabled', true);
+      $('#step-two *').prop('disabled', false);
+    $('#step-three *').prop('disabled', true);
+
+    document.getElementById("button2").disabled = false;
+
+    document.getElementById("button22").disabled = true;
+    document.getElementById("button11").disabled = false;
+    document.getElementById("returnJourney").style.display = "none";
+    document.getElementById("retlabel").style.display = "none";
+    }
+</script>
+
+   <div>
+            <section class="rev">
+            
+
+            <div class="revcontainer">
+     
+
+              <h1>Reserve Concert!</h1>
+              <p>Grab your ticket.</p>
+              <hr>
+              <form action="/adduserrev" method="POST">
+                <% users.forEach(function(user){ %>
+                  <% if (proname != '') { %>
+                                  <% if (user.name == proname) { %>
+                                    Hello, <%= user.name %> 
+                                    <input type="text" id="revuser" value="<%= user.name %>" name="revuser" hidden/>
+                                    <% } %>
+                                    <% } %>
+                                  <% }); %>   
+                <input type="text" id="eventID" name="eventID" hidden/>
+
+                <script>
+                  const queryString = window.location.search;
+                  const urlParams = new URLSearchParams(queryString);
+                  const eventName = urlParams.get('eventName');
+              
+                
+                  document.getElementById('eventID').value = eventName;
+                </script>
+
+<div id="step-one">
+
+
+ 
+              <div class="manydrop" id="peephole">
+  <button type="button" onclick="mehFunction()" class="manydropbtn">People</button>
+  <div id="manyDropdown" class="manydrop-content">
+    <input type="button" name="many" href="#" value="1" onclick="addInput(1)"></a>
+    <input type="button" name="many" href="#" value="2" onclick="addInput(2)"></a>
+    <input type="button" name="many" href="#" value="3" onclick="addInput(3)"></a>
+    <input type="button" name="many" href="#" value="4" onclick="addInput(4)"></a>
+
+  </div>
+ </div>
+ <br>
+ <label for="start"></label>
+
+
+
+
+
+ </div>
+ <br><br>
+ <div id="concerttickets">
+  <p text-align="center">STAGE</p>
+  <input type="radio" id="firstType" name="type" value="1st Class" checked/>
+  <label for="firstType">VIP</label>
+  <input type="radio" id="secondType" name="type" value="2nd Class" />
+  <label for="secondType">AREA A</label>
+  <input type="radio" id="thirdType" name="type" value="3rd Class" />
+  <label for="thirdType">AREA B</label>
+  <div class="section-first">
+    <div class="row">
+      V01<input type="checkbox" class="seat" id="V01" name="seat" value="V01"/>
+      V02<input type="checkbox" class="seat" id="V02" name="seat" value="V02"/>
+      V03<input type="checkbox" class="seat" id="V03" name="seat" value="V03"/>
+      V04<input type="checkbox" class="seat" id="V04" name="seat" value="V04"/>
+      V05<input type="checkbox" class="seat" id="V05" name="seat" value="V05"/>
+      V06<input type="checkbox" class="seat" id="V06" name="seat" value="V06"/>
+      V07<input type="checkbox" class="seat" id="V07" name="seat" value="V07"/>
+      V08<input type="checkbox" class="seat" id="V08" name="seat" value="V08"/>
+      V09<input type="checkbox" class="seat" id="V09" name="seat" value="V09"/>
+      V10<input type="checkbox" class="seat" id="V10" name="seat" value="V10"/>
+    </div>
+    </div>
+    <div class="section-second">
+    <div class="row">
+    A01<input type="checkbox" class="seat" id="A01" name="seat" value="A01"/>
+    A02<input type="checkbox" class="seat" id="A02" name="seat" value="A02"/>
+    A03<input type="checkbox" class="seat" id="A03" name="seat" value="A03"/>
+    A04<input type="checkbox" class="seat" id="A04" name="seat" value="A04"/>
+    A05<input type="checkbox" class="seat" id="A05" name="seat" value="A05"/>
+    A06<input type="checkbox" class="seat" id="A06" name="seat" value="A06"/>
+    A07<input type="checkbox" class="seat" id="A07" name="seat" value="A07"/>
+    A08<input type="checkbox" class="seat" id="A08" name="seat" value="A08"/>
+    A09<input type="checkbox" class="seat" id="A09" name="seat" value="A09"/>
+    A10<input type="checkbox" class="seat" id="A10" name="seat" value="A10"/>
+    </div>
+    <div class="row">
+    A11<input type="checkbox" class="seat" id="A11" name="seat" value="A11"/>
+    A12<input type="checkbox" class="seat" id="A12" name="seat" value="A12"/>
+    A13<input type="checkbox" class="seat" id="A13" name="seat" value="A13"/>
+    A14<input type="checkbox" class="seat" id="A14" name="seat" value="A14"/>
+    A15<input type="checkbox" class="seat" id="A15" name="seat" value="A15"/>
+    A16<input type="checkbox" class="seat" id="A16" name="seat" value="A16"/>
+    A17<input type="checkbox" class="seat" id="A17" name="seat" value="A17"/>
+    A18<input type="checkbox" class="seat" id="A18" name="seat" value="A18"/>
+    A19<input type="checkbox" class="seat" id="A19" name="seat" value="A19"/>
+    A20<input type="checkbox" class="seat" id="A20" name="seat" value="A20"/>
+    </div>
+    </div>
+    <div class="section-third">
+    <div class="row">
+      B01<input type="checkbox" class="seat" id="B01" name="seat" value="B01"/>
+      B02<input type="checkbox" class="seat" id="B02" name="seat" value="B02"/>
+      B03<input type="checkbox" class="seat" id="B03" name="seat" value="B03"/>
+      B04<input type="checkbox" class="seat" id="B04" name="seat" value="B04"/>
+      B05<input type="checkbox" class="seat" id="B05" name="seat" value="B05"/>
+      B06<input type="checkbox" class="seat" id="B06" name="seat" value="B06"/>
+      B07<input type="checkbox" class="seat" id="B07" name="seat" value="B07"/>
+      B08<input type="checkbox" class="seat" id="B08" name="seat" value="B08"/>
+      B09<input type="checkbox" class="seat" id="B09" name="seat" value="B09"/>
+      B10<input type="checkbox" class="seat" id="B10" name="seat" value="B10"/>
+    </div>
+    <div class="row">
+      B11<input type="checkbox" class="seat" id="B11" name="seat" value="B11"/>
+      B12<input type="checkbox" class="seat" id="B12" name="seat" value="B12"/>
+      B13<input type="checkbox" class="seat" id="B13" name="seat" value="B13"/>
+      B14<input type="checkbox" class="seat" id="B14" name="seat" value="B14"/>
+      B15<input type="checkbox" class="seat" id="B15" name="seat" value="B15"/>
+      B16<input type="checkbox" class="seat" id="B16" name="seat" value="B16"/>
+      B17<input type="checkbox" class="seat" id="B17" name="seat" value="B17"/>
+      B18<input type="checkbox" class="seat" id="B18" name="seat" value="B18"/>
+      B19<input type="checkbox" class="seat" id="B19" name="seat" value="B19"/>
+      B20<input type="checkbox" class="seat" id="B20" name="seat" value="B20"/>
+    </div>
+    <div class="row">
+      B21<input type="checkbox" class="seat" id="B21" name="seat" value="B21"/>
+      B22<input type="checkbox" class="seat" id="B22" name="seat" value="B22"/>
+      B23<input type="checkbox" class="seat" id="B23" name="seat" value="B23"/>
+      B24<input type="checkbox" class="seat" id="B24" name="seat" value="B24"/>
+      B25<input type="checkbox" class="seat" id="B25" name="seat" value="B25"/>
+      B26<input type="checkbox" class="seat" id="B26" name="seat" value="B26"/>
+      B27<input type="checkbox" class="seat" id="B27" name="seat" value="B27"/>
+      B28<input type="checkbox" class="seat" id="B28" name="seat" value="B28"/>
+      B29<input type="checkbox" class="seat" id="B29" name="seat" value="B29"/>
+      B30<input type="checkbox" class="seat" id="B30" name="seat" value="B30"/>
+    </div>
+  </div>
+ </div>
+
+
+
+ <br><br>
+
+ <button type="button" id="button1" onclick="continue1()">Continue</button>
+ <button type="button" id="button11" onclick="back1()">Back</button><br>
+
+ <br><br>  
+
+
+    <div id="step-two"> 
+      
+    <section id='input-cont'>
+  <div id="person1"></div>
+  <div id="person2"></div>
+  <div id="person3"></div>
+  <div id="person4"></div>
+  </section>
+        
+        <script>
+ 
+ 
+          const container1 = document.getElementById('person1');
+          const container2 = document.getElementById('person2');
+          const container3 = document.getElementById('person3');
+          const container4 = document.getElementById('person4');
+          
+          // Call addInput() function on button click
+          function addInput(x){
+              container1.innerHTML= '';
+              container2.innerHTML= '';
+              container3.innerHTML= '';
+              container4.innerHTML= '';
+              i = 1;
+              
+              const divToHide = document.getElementById("concerttickets");
+              divToHide.style.display = "block";
+
+              while (i <= x){
+              if (i==1){
+                container1.innerHTML+= 'First Person<br>';
+              let input = document.createElement('input');
+              input.placeholder = 'Full Name';
+              input.setAttribute("disabled", true);
+              input.setAttribute("type", "text");
+              input.setAttribute("name", "data[First_Person][Full_Name]");
+              container1.appendChild(input);
+              container1.innerHTML+= '<br>';
+              let input2 = document.createElement('input');
+              input2.setAttribute("disabled", true);
+              input2.setAttribute("type", "text");
+              input2.setAttribute("name", "data[First_Person][ID_Number]");
+              input2.placeholder = 'ID Number';
+              container1.appendChild(input2);
+              
+        
+            }
+        
+            if (i==2){
+              container2.innerHTML+= 'Second Person<br>';
+              let input = document.createElement('input');
+              input.placeholder = 'Full Name';
+              input.setAttribute("type", "text");
+              input.setAttribute("disabled", true);
+              input.setAttribute("name", "data[Second_Person][Full_Name]");
+              container2.appendChild(input);
+              container2.innerHTML+= '<br>';
+              let input2 = document.createElement('input');
+              input2.placeholder = 'ID Number';
+              input2.setAttribute("type", "text");
+              input2.setAttribute("disabled", true);
+              input2.setAttribute("name", "data[Second_Person][ID_Number]");
+              container2.appendChild(input2);
+        
+            }
+        
+            if (i==3){
+              container3.innerHTML+= 'Third Person<br>';
+              let input = document.createElement('input');
+              input.placeholder = 'Full Name';
+              input.setAttribute("type", "text");
+              input.setAttribute("disabled", true);
+              input.setAttribute("name", "data[Third_Person][Full_Name]");
+              container3.appendChild(input);
+              container3.innerHTML+= '<br>';
+              let input2 = document.createElement('input');
+              input2.placeholder = 'ID Number';
+              input2.setAttribute("type", "text");
+              input2.setAttribute("disabled", true);
+              input2.setAttribute("name", "data[Third_Person][ID_Number]");
+              container3.appendChild(input2);
+        
+            }
+        
+            if (i==4){
+              container4.innerHTML+= 'Fourth Person<br>';
+              let input = document.createElement('input');
+              input.placeholder = 'Full Name';
+              input.setAttribute("type", "text");
+              input.setAttribute("disabled", true);
+              input.setAttribute("name", "data[Fourth_Person][Full_Name]");
+              container4.appendChild(input);
+              container4.innerHTML+= '<br>';
+              let input2 = document.createElement('input');
+              input2.setAttribute("type", "text");
+              input2.setAttribute("disabled", true);
+              input2.setAttribute("name", "data[Fourth_Person][ID_Number]");
+              input2.placeholder = 'ID Number';
+              container4.appendChild(input2);
+        
+            }
+              
+              i++;
+              
+            }
+              
+          }
+         
+
+        </script>
+
+   
+   
+        <br>  
+     
+        
+       
+
+    
+
+        <br>  
+
+
+
+       
+      <script> 
+
+
+
+
+      const divToHide = document.getElementById("concerttickets");
+
+
+divToHide.style.display = "none";
+
+const types = document.querySelectorAll(".type");
+const seats = document.querySelectorAll(".seat");
+let selectedSeats = [];
+
+
+
+
+/*
+types.forEach(type => {
+ let radio = type.querySelector("input[type='radio']");
+ radio.addEventListener("change", e => {
+  
+  if (radio.checked) {
+     
+     types.forEach(otherType => {
+       if (otherType !== type) {
+         otherType.style.display = "none";
+       }
+     });
+   }
+ });
+});
+
+/*
+
+
+
+
+let thirdType = document.getElementById("thirdType");
+thirdType.addEventListener("change", e => {
+ if (thirdType.checked) {
+   let thirdTypeSection = document.querySelector(".section.third");
+   thirdTypeSection.style.display = "flex";
+ }
+});
+
+*/
+
+
+       const container11 = document.getElementById('person1');
+ const container22 = document.getElementById('person2');
+ const container33 = document.getElementById('person3');
+ const container44 = document.getElementById('person4');
+
+ const checkboxes = document.querySelectorAll('.seat');
+       let count = 0;
+       var price = 0;
+       checkboxes.forEach(checkbox => {
+         checkbox.addEventListener('click', function() {
+           
+           if (!container22.innerHTML.trim()) {
+              var g = 1;
+           }else if (!container33.innerHTML.trim()) {
+              var g = 2;
+           }else if (!container44.innerHTML.trim()) {
+              var g = 3;
+           }else if (container11.innerHTML.trim()) {
+              var g = 4;
+           }
+
+           var removePeephole = document.getElementById("peephole");
+           removePeephole.style.display = "none";
+           
+           if(!container11.innerHTML.trim()){
+             var g = 0;
+             alert("Choose how many people in the first step!");
+             location.reload();
+           }
+
+           var priceInput = document.getElementById("price");
+var checkvalue = checkbox.value[0];
+           if (this.checked && count === g) {
+             alert("You can only select up to " + g + " seats");
+             this.checked = false;
+           } else if (this.checked) {
+             
+             
+      
+         
+
+             if (checkvalue === "V") {
+                 price = price + 100;
+             }else  if (checkvalue == "B")
+             {
+               price = price + 30;
+             }else  if (checkvalue == "A")
+             {
+               price = price + 50;
+
+             }else{
+               price = price + 15;
+             }
+             
+           
+           priceInput.value = price;
+             count++;
+           } else {
+         
+             if (checkvalue === "V") {
+                 price = price - 100;
+             }else  if (checkvalue == "B")
+             {
+               price = price - 30;
+             }else  if (checkvalue == "A")
+             {
+               price = price - 50;
+
+             }else{
+               price = price - 15;
+             }
+
+             priceInput.value = price;
+             count--;
+           }
+         });
+       });
+ 
+     /*  
+       seats.forEach(seat => {
+         seat.addEventListener("click", e => {
+           if (!container22.innerHTML.trim()) {
+              var g = 1;
+           }else if (!container33.innerHTML.trim()) {
+              var g = 2;
+           }else if (!container44.innerHTML.trim()) {
+              var g = 3;
+           }else if (container11.innerHTML.trim()) {
+              var g = 4;
+           }
+
+           var removePeephole = document.getElementById("peephole");
+           removePeephole.style.display = "none";
+           
+           if(!container11.innerHTML.trim()){
+             var g = 0;
+             alert("Choose how many people in the first step!");
+           }
+alert(g);
+           if (g!=0 && selectedSeats.length < g && seat.checked) {
+seat.parentNode.classList.add("selected");
+selectedSeats.push(seat.value);
+} else if (!seat.checked) {
+seat.parentNode.classList.remove("selected");
+selectedSeats = selectedSeats.filter(selectedSeat => selectedSeat !== seat.value);
+}
+});
+});
+
+          /* if (g!=0 && selectedSeats.length < g && !seat.classList.contains("selected")) {
+             seat.classList.add("selected");
+             selectedSeats.push(seat.id);
+           } else if (seat.classList.contains("selected")) {
+             seat.classList.remove("selected");
+             selectedSeats = selectedSeats.filter(selectedSeat => selectedSeat !== seat.id);
+           }
+         });
+       });*/
+       </script>
+<label>Price in €:</label>
+<input type="text" id="price" name="price" value="0" readonly />
+ 
+      </div>
+
+      <button type="button" id="button2" onclick="continue2()">Continue</button>
+      <button type="button" id="button22" onclick="back2()">Back</button><br>
+      <div id="step-three">
+ 
+        <br>  
+
+        <label for="email">Enter your email:</label>
+ <input type="text" id="email" name="email" disabled>
+      
+        <p>Card Type:</p>
+        <input type="radio" id="type1" name="cardtype" value="Visa">
+        <label for="age1">Visa</label><br>
+        <input type="radio" id="type2" name="cardtype" value="Mastercard">
+        <label for="age2">Mastercard</label><br>  
+        <input type="radio" id="type3" name="cardtype" value="Paypal">
+        <label for="age3">Paypal</label><br>  
+       <!--   <input type="submit" value="Submit"> -->
+
+       <div id="credit-card-input">
+        <p>Credit Card Number:</p>
+        <input type="text" maxlength="4" id="input1" name="creditnum">
+        <input type="text" maxlength="4" id="input2" name="creditnum">
+        <input type="text" maxlength="4" id="input3" name="creditnum">
+        <input type="text" maxlength="4" id="input4" name="creditnum">
+      </div>
+
+ <br>
+      <script>
+        const input1 = document.getElementById("input1");
+ const input2 = document.getElementById("input2");
+ const input3 = document.getElementById("input3");
+ const input4 = document.getElementById("input4");
+
+ input1.addEventListener("input", moveToNextInput);
+ input2.addEventListener("input", moveToNextInput);
+ input3.addEventListener("input", moveToNextInput);
+ input4.addEventListener("input", function() {});
+
+ function moveToNextInput() {
+  if (this.value.length === 4) {
+    switch (this.id) {
+      case "input1":
+        input2.focus();
+        break;
+      case "input2":
+        input3.focus();
+        break;
+      case "input3":
+        input4.focus();
+        break;
+    }
+  }
+ }
+
+ // Concatenate the values of the 4 inputs to get the 16-digit number
+ function getCreditCardNumber() {
+  return input1.value + input2.value + input3.value + input4.value;
+ }
+      </script>
+       
+    <!--      <input type="submit" value="Submit"> -->
+
+    <div id="catchpa">
+      <p>'Catchpa': Type in this number correctly to submit: </p><p id="randomNumber">00000</p>
+      <input type="text" id="inputNumber" name="catchfive" maxlength="5" />
+      
+    </div>
+    <script>
+      function get(){
+        $('#step-one *').prop('disabled', false);
+    $('#step-two *').prop('disabled', false);
+    $('#step-three *').prop('disabled', false);
+       
+       
+      }
+
+      
+    </script>
+
+    <button type="submit" id="submitButton" onclick="get()" disabled>Submit</button>
+    <script>
+     const randomNumber = document.getElementById("randomNumber");
+ const inputNumber = document.getElementById("inputNumber");
+ const submitButton = document.getElementById("submitButton");
+
+ function generateRandomNumber() {
+  return Math.floor(Math.random() * 100000).toString().padStart(5, "0");
+ }
+
+ randomNumber.textContent = generateRandomNumber();
+
+ inputNumber.addEventListener("input", e => {
+  if (inputNumber.value === randomNumber.textContent) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
+ });
+
+ /*submitButton.addEventListener("click", e => {
+ 
+ }); */
+    </script>
+
+
+</form>
+
+
+
+
+</body>
+<script>
+    document.getElementById("button2").disabled = true;
+
+  
+
+document.getElementById("button11").disabled = true;
+document.getElementById("button22").disabled = true;
+</script>
+
+<footer>
+    <%- include('../common/footer') %>
+</footer>
+
+
+</html>

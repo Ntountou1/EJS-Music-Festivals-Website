@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+<script>
+  function mehFunction() {
+   document.getElementById("manyDropdown").classList.toggle("show");
+ }
+ 
+ // Close the dropdown menu if the user clicks outside of it
+ window.onclick = function(event) {
+   if (!event.target.matches('.manydropbtn')) {
+     var dropdowns = document.getElementsByClassName("manydrop-content");
+     var i;
+     for (i = 0; i < dropdowns.length; i++) {
+       var openDropdown = dropdowns[i];
+       if (openDropdown.classList.contains('show')) {
+         openDropdown.classList.remove('show');
+       }
+     }
+   }
+ }  
+
+ const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const eventName = urlParams.get('eventName');
+
+// Use the event name as needed
+
+ 
+</script>
+
+<body>
+
+  <style>
+    /* Add your CSS styles here */
+    .seat {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 2px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <!-- Reservation section -->
+  <div id="reservationForm">
+    <h2>Make a Reservation</h2>
+    <img id="reservationImage" src="event.jpg" alt="Reservation Image">
+
+    <!-- Dropdown for number of people -->
+    <div class="manydrop" id="peephole">
+      <button type="button" onclick="mehFunction()" class="manydropbtn">People</button>
+      <div id="manyDropdown" class="manydrop-content">
+        <input type="button" name="many" href="#" value="1" onclick="addInput(1)">
+        <input type="button" name="many" href="#" value="2" onclick="addInput(2)">
+        <input type="button" name="many" href="#" value="3" onclick="addInput(3)">
+        <input type="button" name="many" href="#" value="4" onclick="addInput(4)">
+      </div>
+    </div>
+
+    <section class="persons" id="input-cont">
+      <div id="person1"></div><br>
+      <div id="person2"></div><br>
+      <div id="person3"></div><br>
+      <div id="person4"></div><br>
+    </section>
+
+    <!-- Seat selection -->
+    <div id="seatSelection">
+      <h3>Seat Selection</h3>
+      <label for="ticketTypeVIP">VIP</label>
+      <input type="radio" id="ticketTypeVIP" name="ticketType" value="VIP" onclick="highlightSeats('VIP')">
+      <label for="ticketTypeAreaA">Area A</label>
+      <input type="radio" id="ticketTypeAreaA" name="ticketType" value="AreaA" onclick="highlightSeats('AreaA')">
+      <label for="ticketTypeAreaB">Area B</label>
+      <input type="radio" id="ticketTypeAreaB" name="ticketType" value="AreaB" onclick="highlightSeats('AreaB')">
+
+      <div id="seatContainer">
+        <!-- Seat checkboxes will be dynamically populated -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code to handle the functionality
+
+    // Array of seat labels for each ticket type
+    const seatLabels = {
+      VIP: ["V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10"],
+      AreaA: ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20"],
+      AreaB: ["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "B13", "B14", "B15", "B16", "B17", "B18", "B19", "B20", "B21", "B22", "B23", "B24", "B25", "B26", "B27", "B28", "B29", "B30"]
+    };
+
+    // Function to highlight seats based on ticket type selection
+    function highlightSeats(ticketType) {
+      var checkboxes = document.getElementsByClassName("seat");
+      for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i];
+        if (checkbox.classList.contains(ticketType)) {
+          checkbox.classList.add("highlight");
+          checkbox.disabled = false;
+        } else {
+          checkbox.classList.remove("highlight");
+          checkbox.disabled = true;
+        }
+      }
+    }
+
+    // Function to dynamically generate seat checkboxes
+    function generateSeatCheckboxes() {
+      var seatContainer = document.getElementById("seatContainer");
+      seatContainer.innerHTML = "";
+
+      for (var ticketType in seatLabels) {
+        var label = document.createElement("label");
+        label.innerHTML = ticketType;
+        var radioBtn = document.createElement("input");
+        radioBtn.type = "radio";
+        radioBtn.name = "ticketType";
+        radioBtn.value = ticketType;
+        radioBtn.onclick = function () {
+          highlightSeats(this.value);
+        };
+
+        seatContainer.appendChild(label);
+        seatContainer.appendChild(radioBtn);
+
+        for (var i = 0; i < seatLabels[ticketType].length; i++) {
+          var seatLabel = seatLabels[ticketType][i];
+          var checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = seatLabel;
+          checkbox.value = seatLabel;
+          checkbox.disabled = true;
+          checkbox.classList.add("seat", ticketType);
+          seatContainer.appendChild(checkbox);
+          seatContainer.appendChild(document.createTextNode(seatLabel));
+        }
+
+        seatContainer.appendChild(document.createElement("br"));
+      }
+    }
+
+    // Initial generation of seat checkboxes
+    generateSeatCheckboxes();
+
+    // Call generateSeatCheckboxes() function on button click
+    function mehFunction() {
+      var numberOfPeople = parseInt(
+        document.querySelector('input[name="many"]:checked').value
+      );
+      generateSeatCheckboxes();
+      highlightSeats("VIP");
+      highlightSeats("AreaA");
+      highlightSeats("AreaB");
+      disableExtraCheckboxes(numberOfPeople);
+    }
+
+    // Disable checkboxes beyond the maximum number of people
+    function disableExtraCheckboxes(maxNumberOfPeople) {
+      var checkboxes = document.getElementsByClassName("seat");
+      for (var i = maxNumberOfPeople; i < checkboxes.length; i++) {
+        checkboxes[i].disabled = true;
+      }
+    }
+  </script>
+  
+  <script>
+ 
+
+    const container1 = document.getElementById('person1');
+    const container2 = document.getElementById('person2');
+    const container3 = document.getElementById('person3');
+    const container4 = document.getElementById('person4');
+    
+    // Call addInput() function on button click
+    function addInput(x){
+        container1.innerHTML= '';
+        container2.innerHTML= '';
+        container3.innerHTML= '';
+        container4.innerHTML= '';
+        i = 1;
+        
+        while (i <= x){
+        if (i==1){
+          container1.innerHTML+= 'First Person<br>';
+        let input = document.createElement('input');
+        input.placeholder = 'Full Name';
+        input.setAttribute("type", "text");
+        input.setAttribute("disabled", true);
+        input.setAttribute("name", "data[First_Person][Full_Name]");
+        container1.appendChild(input);
+        container1.innerHTML+= '<br>';
+        let input2 = document.createElement('input');
+        input2.setAttribute("type", "text");
+        input2.setAttribute("disabled", true);
+        input2.setAttribute("name", "data[First_Person][ID_Number]");
+        input2.placeholder = 'ID Number';
+        container1.appendChild(input2);
+        
+  
+      }
+  
+      if (i==2){
+        container2.innerHTML+= 'Second Person<br>';
+        let input = document.createElement('input');
+        input.placeholder = 'Full Name';
+        input.setAttribute("type", "text");
+        input.setAttribute("disabled", true);
+        input.setAttribute("name", "data[Second_Person][Full_Name]");
+        container2.appendChild(input);
+        container2.innerHTML+= '<br>';
+        let input2 = document.createElement('input');
+        input2.placeholder = 'ID Number';
+        input2.setAttribute("type", "text");
+        input2.setAttribute("disabled", true);
+        input2.setAttribute("name", "data[Second_Person][ID_Number]");
+        container2.appendChild(input2);
+  
+      }
+  
+      if (i==3){
+        container3.innerHTML+= 'Third Person<br>';
+        let input = document.createElement('input');
+        input.placeholder = 'Full Name';
+        input.setAttribute("type", "text");
+        input.setAttribute("disabled", true);
+        input.setAttribute("name", "data[Third_Person][Full_Name]");
+        container3.appendChild(input);
+        container3.innerHTML+= '<br>';
+        let input2 = document.createElement('input');
+        input2.placeholder = 'ID Number';
+        input2.setAttribute("type", "text");
+        input2.setAttribute("disabled", true);
+        input2.setAttribute("name", "data[Third_Person][ID_Number]");
+        container3.appendChild(input2);
+  
+      }
+  
+      if (i==4){
+        container4.innerHTML+= 'Fourth Person<br>';
+        let input = document.createElement('input');
+        input.placeholder = 'Full Name';
+        input.setAttribute("type", "text");
+        input.setAttribute("disabled", true);
+        input.setAttribute("name", "data[Fourth_Person][Full_Name]");
+        container4.appendChild(input);
+        container4.innerHTML+= '<br>';
+        let input2 = document.createElement('input');
+        input2.setAttribute("type", "text");
+        input2.setAttribute("disabled", true);
+        input2.setAttribute("name", "data[Fourth_Person][ID_Number]");
+        input2.placeholder = 'ID Number';
+        container4.appendChild(input2);
+  
+      }
+        
+        i++;
+        
+      }
+        
+    }
+  </script>
+
+</body>
+
+
+<footer>
+    <%- include('../common/footer') %>
+</footer>
+
+
+</html>

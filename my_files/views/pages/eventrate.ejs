@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+  
+<style>
+    input:not(:checked) ~ label:hover,
+  input:not(:checked) ~ label:hover ~ label{
+    color: #fd4;
+    cursor: pointer;
+  }
+  input:checked ~ label{
+    color: #fd4;
+  }
+  input#rate-5:checked ~ label{
+    color: #fe7;
+    text-shadow: 0 0 20px #952;
+  }
+  </style>
+
+<body>
+
+  <!--Dark Theme-->
+  <button onclick="toggleDark()">
+    <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+      <path fill="currentColor"
+        d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+      </path>
+    </svg></button>
+  <script type="text/javascript" src="toggleDark.js"></script>
+
+
+<br><br><br><br><br>
+    <div id='sightrateimg'>
+        <% events.forEach(function(event){ %>
+
+         
+    <div id="sighrates">
+   <div class="basicevent"><img src="<%= event.photo %>"></div>
+    <div class="hide"><img src="<%= event.mapp %>"></div>
+    <h3><%= event.name %></h3>
+    <p><%= event.desc %> </p>
+    <p><%= event.date %> </p>
+
+    
+  <section class="reg">
+    <form action="/addreview" method="POST">
+        <div class="regcontainer">
+          <h2>Rate</h2><h1><strong>" <%= event.name %> "</strong></h1>
+          <p>Use this form to review a concert you attended.</p>
+          <hr>
+          <input type="text" value="<%= event.name %>" name="name" id="name" hidden>
+          <label for="desc"><b>Review</b></label>
+          <input type="text" placeholder="Describe your experience in the concert!" name="desc" id="desc" required>
+        
+         
+          <div class="ratainer">
+            <div class="star-widget">
+              <input type="radio" name="rate" value="5" id="rate-5">
+              <label for="rate-5" class="fas fa-star"></label>
+              <input type="radio" name="rate" value="4" id="rate-4">
+              <label for="rate-4" class="fas fa-star"></label>
+              <input type="radio" name="rate" value="3" id="rate-3">
+              <label for="rate-3" class="fas fa-star"></label>
+              <input type="radio" name="rate" value="2" id="rate-2">
+              <label for="rate-2" class="fas fa-star"></label>
+              <input type="radio" name="rate" value="1" id="rate-1">
+              <label for="rate-1" class="fas fa-star"></label>
+              
+            </div>
+          </div>
+       
+       <!--  <label for="photo"><b>Photo Source</b></label>
+          <input type="text" placeholder="Enter image name.jpg in images folder" name="photo" id="photo">--> 
+        
+          <hr>
+    
+          <input type="submit" class="addsightbtn" value="Submit">
+        </div>
+      
+      </form>
+    </section>
+    </div>
+    <% }); %>
+  </div>
+
+
+
+<script>
+       $('.first-image').mouseover(function(){
+                $(this).toggleClass('second-image');	
+            });
+            $('.second-image').mouseover(function(){
+                $(this).toggleClass('first-image');	
+            });
+
+            
+</script>
+
+<script>
+    const btn = document.querySelector("button");
+    const post = document.querySelector(".post");
+    const widget = document.querySelector(".star-widget");
+    const editBtn = document.querySelector(".edit");
+    btn.onclick = ()=>{
+      widget.style.display = "none";
+      post.style.display = "block";
+      editBtn.onclick = ()=>{
+        widget.style.display = "block";
+        post.style.display = "none";
+      }
+      return false;
+    }
+  </script>
+  
+</body>
+
+
+<footer>
+    <%- include('../common/footer') %>
+</footer>
+
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<%- include('../../common/head') %>
+  <header>
+    <%- include('../../common/nav') %>
+  </header>
+
+
+  <script src="../../../scripts/login.js"></script>
+
+  <body onload="adminCookie()">
+
+    <!--Dark Theme-->
+    <button onclick="toggleDark()">
+      <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+        <path fill="currentColor"
+          d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+        </path>
+      </svg></button>
+    <script type="text/javascript" src="toggleDark.js"></script>
+
+
+    <section class="dashboard">
+
+
+      <!--<img src="images/profile.jpg" alt="">-->
+      </div>
+      <div class="dash-content">
+        <div class="overview">
+          <div class="title">
+            <i class="uil uil-tachometer-fast-alt"></i>
+            <span class="text">Dashboard</span>
+          </div>
+          <div class="boxes">
+            <div class="box box1">
+              <i class="uil uil-thumbs-up"></i>
+              <span class="text">Total Likes</span>
+              <span class="number">50,120</span>
+            </div>
+            <div class="box box2">
+              <i class="uil uil-comments"></i>
+              <span class="text">Comments</span>
+              <span class="number">20,120</span>
+            </div>
+            <div class="box box3">
+              <i class="uil uil-share"></i>
+              <span class="text">Total Share</span>
+              <span class="number">10,120</span>
+            </div>
+          </div>
+        </div>
+        <div class="activity">
+          <div class="title">
+            <i class="uil uil-clock-three"></i>
+            <span class="text">Recent Activity</span>
+          </div>
+          <div class="activity-data">
+            <div class="data names">
+              <span class="data-title">Name</span>
+              <span class="data-list">Emma Johnson</span>
+              <span class="data-list">Benjamin Martinez</span>
+              <span class="data-list">Olivia Thompson</span>
+              <span class="data-list">Alexander Davis</span>
+              <span class="data-list">Sophia Wilson</span>
+              <span class="data-list">Ethan Anderson</span>
+              <span class="data-list">Ava Rodriguez</span>
+            </div>
+            <div class="data email">
+              <span class="data-title">Email</span>
+              <span class="data-list">emma.johnson@example.com</span>
+              <span class="data-list">benjamin.martinez@example.com</span>
+              <span class="data-list">olivia.thompson@example.com</span>
+              <span class="data-list">alexander.davis@example.com</span>
+              <span class="data-list">sophia.wilson@example.com</span>
+              <span class="data-list">ethan.anderson@example.com</span>
+              <span class="data-list">ava.rodriguez@example.com</span>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chart-container">
+      <div class="year-stats">
+        <div class="month-group">
+          <div class="bar h-100"></div>
+          <p class="month">Jan</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-50"></div>
+          <p class="month">Feb</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-75"></div>
+          <p class="month">Mar</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-25"></div>
+          <p class="month">Apr</p>
+        </div>
+        <div class="month-group selected">
+          <div class="bar h-100"></div>
+          <p class="month">May</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-50"></div>
+          <p class="month">Jun</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-75"></div>
+          <p class="month">Jul</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-25"></div>
+          <p class="month">Aug</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-50"></div>
+          <p class="month">Sep</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-75"></div>
+          <p class="month">Oct</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-25"></div>
+          <p class="month">Nov</p>
+        </div>
+        <div class="month-group">
+          <div class="bar h-100"></div>
+          <p class="month">Dez</p>
+        </div>
+      </div>
+
+      <div class="stats-info">
+        <div class="graph-container">
+          <div class="percent">
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845
+        a 15.9155 15.9155 0 0 1 0 31.831
+        a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" stroke-dasharray="85, 100" d="M18 2.0845
+        a 15.9155 15.9155 0 0 1 0 31.831
+        a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" stroke-dasharray="60, 100" d="M18 2.0845
+        a 15.9155 15.9155 0 0 1 0 31.831
+        a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+        a 15.9155 15.9155 0 0 1 0 31.831
+        a 15.9155 15.9155 0 0 1 0 -31.831" />
+            </svg>
+          </div>
+          <p>Total: $2075</p>
+        </div>
+
+        <div class="info">
+          <p>Most expensive category <br /><span>3 Days Festivals</span></p>
+          <p>Updated categories <span>2</span></p>
+          <p>Bonus payments <span>$92</span></p>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+
+
+  <footer>
+    <%- include('../../common/footer') %>
+  </footer>
+
+  </html>

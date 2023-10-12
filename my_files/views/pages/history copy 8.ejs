@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+<script>
+  function mehFunction() {
+   document.getElementById("manyDropdown").classList.toggle("show");
+ }
+ 
+ // Close the dropdown menu if the user clicks outside of it
+ window.onclick = function(event) {
+   if (!event.target.matches('.manydropbtn')) {
+     var dropdowns = document.getElementsByClassName("manydrop-content");
+     var i;
+     for (i = 0; i < dropdowns.length; i++) {
+       var openDropdown = dropdowns[i];
+       if (openDropdown.classList.contains('show')) {
+         openDropdown.classList.remove('show');
+       }
+     }
+   }
+ }  
+
+ 
+</script>
+
+<script>
+  
+
+  function continue1(){
+    $('#step-one *').prop('disabled', true);
+    $('#step-two *').prop('disabled', false);
+    $('#step-three *').prop('disabled', true);
+   
+    document.getElementById("button1").disabled = true;
+    document.getElementById("button2").disabled = false;
+    document.getElementById("button11").disabled = false;
+    document.getElementById("button22").disabled = true;
+    
+
+
+    }
+
+    function continue2(){
+      $('#step-one *').prop('disabled', true);
+      $('#step-two *').prop('disabled', true);
+    $('#step-three *').prop('disabled', false);
+
+    document.getElementById("button2").disabled = true;
+
+    document.getElementById("button22").disabled = false;
+    document.getElementById("button11").disabled = true;
+
+    const submitButton = document.getElementById("submitButton");
+
+    submitButton.disabled = true;
+
+
+    }
+
+  
+    
+
+    function back1(){
+    $('#step-one *').prop('disabled', false);
+    $('#step-two *').prop('disabled', true);
+    $('#step-three *').prop('disabled', true);
+
+    document.getElementById("button1").disabled = false;
+    document.getElementById("button2").disabled = true;
+    document.getElementById("button11").disabled = true;
+    }
+
+    function back2(){
+      $('#step-one *').prop('disabled', true);
+      $('#step-two *').prop('disabled', false);
+    $('#step-three *').prop('disabled', true);
+
+    document.getElementById("button2").disabled = false;
+
+    document.getElementById("button22").disabled = true;
+    document.getElementById("button11").disabled = false;
+    document.getElementById("returnJourney").style.display = "none";
+    document.getElementById("retlabel").style.display = "none";
+    }
+</script>
+
+
+|<div>
+  <form action="/adduserrev" method="POST">
+
+    
+
+<div id="step-one">
+
+
+
+</div>
+
+<button type="button" id="button1" onclick="continue1()">Continue</button>
+<button type="button" id="button11" onclick="back1()">Back</button><br>
+
+
+<div id="step-two">
+
+
+
+</div>
+
+
+<button type="button" id="button2" onclick="continue2()">Continue</button>
+<button type="button" id="button22" onclick="back2()">Back</button><br>
+
+
+<div id="step-three">
+
+
+
+</div>
+
+</form>
+</div>

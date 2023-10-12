@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<%- include('../common/head') %>
+<header>
+    <%- include('../common/nav') %>
+</header>
+
+  
+
+<body>
+    <!--Dark Theme-->
+    <button onclick="toggleDark()">
+        <svg aria-hidden="true" data-prefix="fas" data-icon="moon" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512" style="height: 2rem; width: 2rem;" class="svg-inline--fa fa-moon">
+          <path fill="currentColor"
+            d="M32 256C32 132.2 132.3 32 255.8 32c11.36 0 29.7 1.668 40.9 3.746 9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3 9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480 132.1 480 32 379.6 32 256z">
+          </path>
+        </svg></button>
+      <script type="text/javascript" src="toggleDark.js"></script>
+    <div id="filt">
+    <p>Choose Filter</p><br>
+    <% const filac = []; %>
+
+    <% acts.forEach(function(act){ %>
+     <% if (filac.indexOf(act.cat) < 0) {   %>
+        <form action="/actfilter" method="POST">
+            <p><%= act.cat %> </p>
+            
+         <input type="checkbox" name="checkbox" value="<%=act.cat%>" onchange="this.form.submit()">
+      
+        </form>
+        <% } %>
+        <% filac.push(act.cat); %>
+        <% }); %>
+        <form action="/actfilter" method="POST">
+            <p>Undo </p>
+         <input type="checkbox" name="checkbox" value="#" onchange="this.form.submit()">
+      
+        </form>
+    </div>
+<br><br><br><br><br>
+
+    <div id='sightimg'>
+        <% acts.forEach(function(act){ %>
+            <% if ( act.cat === acturl || acturl === "#" ) { %>
+            <div id="sighent">
+            <img src="<%= act.photo %>">
+            <h3><%= act.name %> </h3>
+            <p><%= act.desc %> </p>
+            <p><%= act.cat %> </p>
+            </div>
+        <%   } %>
+
+      
+            <% }); %>
+  </div>
+
+
+
+</body>
+
+
+<footer>
+    <%- include('../common/footer') %>
+</footer>
+
+
+</html>
