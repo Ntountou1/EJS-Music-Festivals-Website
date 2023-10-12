@@ -1,1 +1,1 @@
-# Javascript-Music-Festivals-Website
+# EJS-Music-Festivals-Website
